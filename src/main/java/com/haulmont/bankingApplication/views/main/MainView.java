@@ -1,14 +1,11 @@
 package com.haulmont.bankingApplication.views.main;
 
-import com.haulmont.bankingApplication.views.MyUI;
-import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.FileResource;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
-import com.vaadin.ui.themes.ValoTheme;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
