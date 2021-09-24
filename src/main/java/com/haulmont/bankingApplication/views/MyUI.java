@@ -28,9 +28,9 @@ public class MyUI extends UI implements ViewDisplay, Serializable {
         buttonsLayout = new HorizontalLayout();
         buttonsLayout.addComponents(
                 createNavigationButton("Home", ""),
-                createNavigationButton("Clients", "bank"),
-                createNavigationButton("Bank", "credits"),
-                createNavigationButton("Credit", "clients"),
+                createNavigationButton("Clients", "clients"),
+                createNavigationButton("Bank", "bank"),
+                createNavigationButton("Credit", "credits"),
                 createNavigationButton("Credit Registration", "creditOffer")
         );
 
@@ -58,13 +58,6 @@ public class MyUI extends UI implements ViewDisplay, Serializable {
         button.addStyleName(ValoTheme.BUTTON_LARGE);
         button.addClickListener(event -> getUI().getNavigator().navigateTo(viewName));
         return button;
-    }
-
-    public static void setStyleForButton(int indexOfCurrentPage) {
-        int countOfButtons = buttonsLayout.getComponentCount();
-        for(int i=1; i<countOfButtons; i++)
-            buttonsLayout.getComponent(i).removeStyleName(ValoTheme.BUTTON_BORDERLESS_COLORED);
-        buttonsLayout.getComponent(indexOfCurrentPage).addStyleName(ValoTheme.BUTTON_BORDERLESS_COLORED);
     }
 
     @Override
