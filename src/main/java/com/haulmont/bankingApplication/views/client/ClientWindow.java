@@ -42,12 +42,21 @@ public class ClientWindow extends Window implements View {
     public Component createContent() {
         VerticalLayout main = new VerticalLayout();
         HorizontalLayout buttonsLayout = new HorizontalLayout();
-        HorizontalLayout rowFCS = new HorizontalLayout();
-        HorizontalLayout rowOtherData = new HorizontalLayout();
+        HorizontalLayout rowFirstname = new HorizontalLayout();
+        HorizontalLayout rowSurname = new HorizontalLayout();
+        HorizontalLayout rowPatronymic = new HorizontalLayout();
+        HorizontalLayout rowPassportNumber = new HorizontalLayout();
+        HorizontalLayout rowPhoneNumber = new HorizontalLayout();
+        HorizontalLayout rowMail = new HorizontalLayout();
+
         buttonsLayout.addComponents(save, cancel);
-        rowFCS.addComponents(firstname, surname, patronymic);
-        rowOtherData.addComponents(passportNumber, phoneNumber, mail);
-        main.addComponents(rowFCS, rowOtherData, buttonsLayout);
+        rowFirstname.addComponent(firstname);
+        rowSurname.addComponent(surname);
+        rowPatronymic.addComponent(patronymic);
+        rowPassportNumber.addComponent(passportNumber);
+        rowPhoneNumber.addComponent(phoneNumber);
+        rowMail.addComponent(mail);
+        main.addComponents(rowFirstname, rowSurname, rowPatronymic, rowPassportNumber, rowPhoneNumber, rowMail, buttonsLayout);
 
         firstname.setRequiredIndicatorVisible(true);
         surname.setRequiredIndicatorVisible(true);
