@@ -3,10 +3,12 @@ package com.haulmont.bankingApplication.services;
 import com.haulmont.bankingApplication.models.PaymentSchedule;
 import com.haulmont.bankingApplication.repositories.PaymentScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class PaymentScheduleService {
     @Autowired
     PaymentScheduleRepository paymentScheduleRepository;
