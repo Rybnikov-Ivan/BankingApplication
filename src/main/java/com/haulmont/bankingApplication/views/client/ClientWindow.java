@@ -50,6 +50,7 @@ public class ClientWindow extends Window implements View {
         HorizontalLayout rowMail = new HorizontalLayout();
 
         buttonsLayout.addComponents(save, cancel);
+
         rowFirstname.addComponent(firstname);
         rowSurname.addComponent(surname);
         rowPatronymic.addComponent(patronymic);

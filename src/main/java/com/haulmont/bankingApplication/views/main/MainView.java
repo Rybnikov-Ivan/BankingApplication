@@ -4,6 +4,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.FileResource;
+import com.vaadin.server.Page;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 
@@ -17,7 +18,7 @@ public class MainView extends VerticalLayout implements View, Serializable {
     @PostConstruct
     void init() {
         FileResource bankFile = new FileResource(new File("src/main/resources/images/bank.jpg"));
-
+        Page.getCurrent().setTitle("Home");
         VerticalLayout verticalLayout = new VerticalLayout();
         HorizontalLayout horizontalLayout = new HorizontalLayout();
         HorizontalLayout headerLayout = new HorizontalLayout();
