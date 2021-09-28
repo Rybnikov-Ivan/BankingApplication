@@ -13,7 +13,7 @@ public class Bank {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
@@ -26,7 +26,6 @@ public class Bank {
     public Bank(){}
 
     public Bank(Client client, Credit bankCredit) {
-        this.id = UUID.randomUUID();
         this.client = client;
         this.bankCredit = bankCredit;
     }

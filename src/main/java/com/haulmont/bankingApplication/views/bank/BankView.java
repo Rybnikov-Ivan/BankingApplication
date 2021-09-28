@@ -33,7 +33,7 @@ public class BankView extends VerticalLayout implements View {
     CreditOfferService creditOfferService;
 
     public static Grid<Bank> bankGrid = new Grid<>(Bank.class);
-    public static UUID bank_id;
+    public static Long bank_id;
     private final Button addButton = new Button("Insert");
     private final Button deleteButton = new Button("Delete");
     private final Button detailsButton = new Button("Details");
@@ -78,14 +78,14 @@ public class BankView extends VerticalLayout implements View {
             bank_id = bankGrid.asSingleSelect().getValue().getId();
             try {
                 List<CreditOffer> creditOffers = creditOfferService.findOffersForClient(BankView.bank_id);
-                List<UUID> idsOfPaymentSchedules = new ArrayList<>();
+                List<Long> idsOfPaymentSchedules = new ArrayList<>();
 
                 for (CreditOffer creditOffer : creditOffers)
                     idsOfPaymentSchedules.add(creditOffer.getPaymentSchedule().getId());
 
                 creditOfferService.deleteAllOffersForClient(BankView.bank_id);
 
-                for (UUID l : idsOfPaymentSchedules)
+                for (Long l : idsOfPaymentSchedules)
                     paymentScheduleService.deleteById(l);
 
                 bankService.delete(bank);
@@ -105,7 +105,7 @@ public class BankView extends VerticalLayout implements View {
 
         detailsButton.addClickListener(e -> {
             bank_id = bankGrid.asSingleSelect().getValue().getId();
-            getUI().getNavigator().navigateTo("BankPayments");
+            getUI().getNavigator().navigateTo("BankDetails");
         });
 
         updateBankGrid(bankService);

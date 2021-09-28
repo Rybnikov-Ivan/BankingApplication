@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface CreditRepository extends JpaRepository<Credit, UUID> {
+public interface CreditRepository extends JpaRepository<Credit, Long> {
     @Query("select credit from Credit credit where credit.creditLimit >= :creditAmount")
     List<Credit> findCreditsByAmount(@Param("creditAmount") Long creditAmount);
 }

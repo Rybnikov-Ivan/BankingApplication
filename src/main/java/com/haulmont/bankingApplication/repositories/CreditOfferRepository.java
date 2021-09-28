@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface CreditOfferRepository extends JpaRepository<CreditOffer, UUID> {
+public interface CreditOfferRepository extends JpaRepository<CreditOffer, Long> {
 
     @Query("select p from CreditOffer p where p.bankId =:bankID")
-    List<CreditOffer> findAllOffersForClient(@Param("bankID") UUID bankID);
+    List<CreditOffer> findAllOffersForClient(@Param("bankID") Long bankID);
 
     @Query("delete from CreditOffer p where p.bankId =:bankID")
-    void deleteOffersForClient(@Param("bankID") UUID bankID);
+    void deleteOffersForClient(@Param("bankID") Long bankID);
 }

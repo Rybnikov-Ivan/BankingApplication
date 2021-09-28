@@ -12,7 +12,7 @@ import java.util.UUID;
 public class CreditOffer {
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
@@ -35,12 +35,11 @@ public class CreditOffer {
 
     @NotNull
     @Column(name = "bankId")
-    private UUID bankId;
+    private long bankId;
 
     public CreditOffer(){}
 
-    public CreditOffer(Client client, Credit credit, PaymentSchedule paymentSchedule, Long creditAmount, UUID bankId) {
-        this.id = UUID.randomUUID();
+    public CreditOffer(Client client, Credit credit, PaymentSchedule paymentSchedule, Long creditAmount, long bankId) {
         this.client = client;
         this.credit = credit;
         this.paymentSchedule = paymentSchedule;

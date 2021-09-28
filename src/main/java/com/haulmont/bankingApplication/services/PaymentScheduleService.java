@@ -19,7 +19,7 @@ public class PaymentScheduleService {
         return paymentScheduleRepository.findAll();
     }
 
-    public void deleteById(UUID id){
+    public void deleteById(Long id){
         paymentScheduleRepository.deleteById(id);
     }
 

@@ -9,12 +9,12 @@ import java.util.UUID;
 
 @Entity
 @Data
-@Table(name = "paymentShedule")
+@Table(name = "paymentSchedule")
 public class PaymentSchedule {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @NotNull
     @Column(name = "dateOfPayment")
@@ -35,7 +35,6 @@ public class PaymentSchedule {
     public PaymentSchedule(){}
 
     public PaymentSchedule(Date dateOfPayment, Double paymentAmount, Double percentRepayment, Double repaymentAmountMainPart) {
-        this.id = UUID.randomUUID();
         this.dateOfPayment = dateOfPayment;
         this.paymentAmount = paymentAmount;
         this.percentRepayment = percentRepayment;

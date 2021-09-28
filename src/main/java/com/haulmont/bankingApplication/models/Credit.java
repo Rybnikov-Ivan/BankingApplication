@@ -13,7 +13,7 @@ public class Credit {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @NotNull
     @Column(name = "creditLimit")
@@ -26,7 +26,6 @@ public class Credit {
     public Credit(){}
 
     public Credit(Long creditLimit, Double interestRate) {
-        this.id = UUID.randomUUID();
         this.creditLimit = creditLimit;
         this.interestRate = interestRate;
     }

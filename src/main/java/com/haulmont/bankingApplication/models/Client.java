@@ -13,7 +13,7 @@ public class Client {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @NotNull
     @Column(name = "firstname")
@@ -43,7 +43,6 @@ public class Client {
     }
 
     public Client(String firstname, String surname, String patronymic, Long phoneNumber, Long passportNumber, String mail) {
-        this.id = UUID.randomUUID();
         this.firstname = firstname;
         this.surname = surname;
         this.patronymic = patronymic;

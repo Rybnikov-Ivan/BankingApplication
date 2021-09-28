@@ -19,11 +19,11 @@ public class CreditOfferService {
         creditOfferRepository.save(creditOffer);
     }
 
-    public List<CreditOffer> findOffersForClient(UUID bankId) {
+    public List<CreditOffer> findOffersForClient(Long bankId) {
         return creditOfferRepository.findAllOffersForClient(bankId);
     }
 
-    public void deleteAllOffersForClient(UUID bankID) {
+    public void deleteAllOffersForClient(Long bankID) {
         creditOfferRepository.deleteOffersForClient(bankID);
     }
 }
