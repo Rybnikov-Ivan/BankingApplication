@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class CreditOfferService {
@@ -18,11 +19,11 @@ public class CreditOfferService {
         creditOfferRepository.save(creditOffer);
     }
 
-    public List<CreditOffer> findOffersForClient(long bankId) {
+    public List<CreditOffer> findOffersForClient(UUID bankId) {
         return creditOfferRepository.findAllOffersForClient(bankId);
     }
 
-    public void deleteAllOffersForClient(long bankID) {
+    public void deleteAllOffersForClient(UUID bankID) {
         creditOfferRepository.deleteOffersForClient(bankID);
     }
 }

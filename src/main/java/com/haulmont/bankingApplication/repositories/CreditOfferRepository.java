@@ -13,8 +13,8 @@ import java.util.UUID;
 public interface CreditOfferRepository extends JpaRepository<CreditOffer, UUID> {
 
     @Query("select p from CreditOffer p where p.bankId =:bankID")
-    List<CreditOffer> findAllOffersForClient(@Param("bankID") long bankID);
+    List<CreditOffer> findAllOffersForClient(@Param("bankID") UUID bankID);
 
     @Query("delete from CreditOffer p where p.bankId =:bankID")
-    void deleteOffersForClient(@Param("bankID") long bankID);
+    void deleteOffersForClient(@Param("bankID") UUID bankID);
 }
