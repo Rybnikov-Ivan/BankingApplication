@@ -90,13 +90,13 @@ public class BankView extends VerticalLayout implements View {
 
                 bankService.delete(bank);
                 updateBankGrid(bankService);
-                Notification notification = new Notification(bank.toString() + " был успешно удален",
+                Notification notification = new Notification("Deleted",
                         Notification.Type.WARNING_MESSAGE);
                 notification.setDelayMsec(1500);
                 notification.setPosition(Position.BOTTOM_CENTER);
                 notification.show(getUI().getPage());
             } catch (Exception deleteException) {
-                Notification notification = new Notification("Ошибка! Попробуйте еще раз позже",
+                Notification notification = new Notification("Error",
                         Notification.Type.WARNING_MESSAGE);
                 notification.show(getUI().getPage());
                 deleteException.printStackTrace();
