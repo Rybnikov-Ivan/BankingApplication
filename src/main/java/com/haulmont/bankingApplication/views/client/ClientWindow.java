@@ -26,6 +26,15 @@ public class ClientWindow extends Window implements View {
     private final Button save = new Button("Save");
     private final Button cancel = new Button("Cancel");
 
+    private final VerticalLayout main = new VerticalLayout();
+    private final HorizontalLayout buttonsLayout = new HorizontalLayout();
+    private final HorizontalLayout rowFirstname = new HorizontalLayout();
+    private final HorizontalLayout rowSurname = new HorizontalLayout();
+    private final HorizontalLayout rowPatronymic = new HorizontalLayout();
+    private final HorizontalLayout rowPassportNumber = new HorizontalLayout();
+    private final HorizontalLayout rowPhoneNumber = new HorizontalLayout();
+    private final HorizontalLayout rowMail = new HorizontalLayout();
+
     public ClientWindow(ClientService clientService, Client client) {
         this.clientService = clientService;
         this.client = client;
@@ -40,17 +49,7 @@ public class ClientWindow extends Window implements View {
     }
 
     public Component createContent() {
-        VerticalLayout main = new VerticalLayout();
-        HorizontalLayout buttonsLayout = new HorizontalLayout();
-        HorizontalLayout rowFirstname = new HorizontalLayout();
-        HorizontalLayout rowSurname = new HorizontalLayout();
-        HorizontalLayout rowPatronymic = new HorizontalLayout();
-        HorizontalLayout rowPassportNumber = new HorizontalLayout();
-        HorizontalLayout rowPhoneNumber = new HorizontalLayout();
-        HorizontalLayout rowMail = new HorizontalLayout();
-
         buttonsLayout.addComponents(save, cancel);
-
         rowFirstname.addComponent(firstname);
         rowSurname.addComponent(surname);
         rowPatronymic.addComponent(patronymic);
@@ -60,9 +59,14 @@ public class ClientWindow extends Window implements View {
         main.addComponents(rowFirstname, rowSurname, rowPatronymic, rowPassportNumber, rowPhoneNumber, rowMail, buttonsLayout);
 
         firstname.setRequiredIndicatorVisible(true);
+        firstname.setPlaceholder("only letters");
         surname.setRequiredIndicatorVisible(true);
+        surname.setPlaceholder("only letters");
+        patronymic.setPlaceholder("only letters");
         phoneNumber.setRequiredIndicatorVisible(true);
+        phoneNumber.setPlaceholder("10 numbers");
         passportNumber.setRequiredIndicatorVisible(true);
+        passportNumber.setPlaceholder("10 numbers");
 
         cancel.addClickListener(event -> getUI().removeWindow(ClientWindow.this));
         cancel.setStyleName(ValoTheme.BUTTON_DANGER);

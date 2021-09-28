@@ -20,33 +20,38 @@ public class ClientView extends VerticalLayout implements View {
 
     public static Grid<Client> clientGrid = new Grid<>(Client.class);
 
+    private final HorizontalLayout headerLayout = new HorizontalLayout();
+    private final HorizontalLayout buttonsLayout = new HorizontalLayout();
+
+    private final Button addButton = new Button("Insert");
+    private final Button editButton = new Button("Update");
+    private final Button deleteButton = new Button("Delete");
+
+    private final Label header = new Label("All clients");
+
     @PostConstruct
     void init(){
-        Button addButton = new Button("Insert");
-        Button editButton = new Button("Update");
-        Button deleteButton = new Button("Delete");
+        Page.getCurrent().setTitle("Clients");
+
+        header.addStyleName(ValoTheme.LABEL_HUGE);
+        headerLayout.setWidth("100%");
+        headerLayout.addComponent(header);
+        headerLayout.setComponentAlignment(header, Alignment.TOP_CENTER);
+        headerLayout.addStyleName(ValoTheme.LAYOUT_CARD);
+        addComponent(headerLayout);
 
         addButton.setIcon(VaadinIcons.INSERT);
         editButton.setIcon(VaadinIcons.REFRESH);
+        editButton.setEnabled(false);
         deleteButton.setIcon(VaadinIcons.FOLDER_REMOVE);
         deleteButton.setStyleName(ValoTheme.BUTTON_DANGER);
-
-        Page.getCurrent().setTitle("Clients");
-
         deleteButton.setEnabled(false);
-        editButton.setEnabled(false);
-
-        HorizontalLayout buttonsLayout = new HorizontalLayout();
         buttonsLayout.addComponents(addButton, editButton, deleteButton);
-
         addComponent(buttonsLayout);
 
         clientGrid.setSizeFull();
         clientGrid.setColumns("firstname", "surname", "patronymic", "phoneNumber", "passportNumber","mail");
         clientGrid.setItems(clientService.findAll());
-
-        addComponent(clientGrid);
-
         clientGrid.addSelectionListener(valueChangeEvent -> {
             if (!clientGrid.asSingleSelect().isEmpty()) {
                 editButton.setEnabled(true);
@@ -56,6 +61,7 @@ public class ClientView extends VerticalLayout implements View {
                 deleteButton.setEnabled(false);
             }
         });
+        addComponent(clientGrid);
 
         addButton.addClickListener(e -> {
             Client client = new Client();
