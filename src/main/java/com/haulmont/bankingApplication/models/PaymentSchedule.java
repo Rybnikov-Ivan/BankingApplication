@@ -25,15 +25,20 @@ public class PaymentSchedule {
     private Double paymentAmount;
 
     @NotNull
+    @Column(name = "repaymentAmountMainPart")
+    private Double repaymentAmountMainPart;
+
+    @NotNull
     @Column(name = "percentRepayment")
     private Double percentRepayment;
 
     public PaymentSchedule(){}
 
-    public PaymentSchedule(Date dateOfPayment, Double paymentAmount, Double percentRepayment) {
+    public PaymentSchedule(Date dateOfPayment, Double paymentAmount, Double percentRepayment, Double repaymentAmountMainPart) {
         this.id = UUID.randomUUID();
         this.dateOfPayment = dateOfPayment;
         this.paymentAmount = paymentAmount;
         this.percentRepayment = percentRepayment;
+        this.repaymentAmountMainPart = repaymentAmountMainPart;
     }
 }

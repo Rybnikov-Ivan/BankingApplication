@@ -35,11 +35,11 @@ public class CreditOffer {
 
     @NotNull
     @Column(name = "bankId")
-    private long bankId;
+    private UUID bankId;
 
     public CreditOffer(){}
 
-    public CreditOffer(Client client, Credit credit, PaymentSchedule paymentSchedule, Long creditAmount, long bankId) {
+    public CreditOffer(Client client, Credit credit, PaymentSchedule paymentSchedule, Long creditAmount, UUID bankId) {
         this.id = UUID.randomUUID();
         this.client = client;
         this.credit = credit;
