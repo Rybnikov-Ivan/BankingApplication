@@ -34,7 +34,12 @@ public class BankView extends VerticalLayout implements View {
     CreditOfferService creditOfferService;
 
     public static Grid<Bank> bankGrid = new Grid<>(Bank.class);
+
     public static Long bank_id;
+
+    private final HorizontalLayout headerLayout = new HorizontalLayout();
+    private final Label header = new Label("Bank");
+
     private final Button addButton = new Button("Insert");
     private final Button deleteButton = new Button("Delete");
     private final Button detailsButton = new Button("Details");
@@ -45,6 +50,13 @@ public class BankView extends VerticalLayout implements View {
     void init(){
         Page.getCurrent().setTitle("Bank");
         MyUI.setStyleNavigationButton(2);
+
+        header.addStyleName(ValoTheme.LABEL_HUGE);
+        headerLayout.setWidth("100%");
+        headerLayout.addComponent(header);
+        headerLayout.setComponentAlignment(header, Alignment.TOP_CENTER);
+        headerLayout.addStyleName(ValoTheme.LAYOUT_CARD);
+        addComponent(headerLayout);
 
         addButton.setIcon(VaadinIcons.INSERT);
         detailsButton.setEnabled(false);
