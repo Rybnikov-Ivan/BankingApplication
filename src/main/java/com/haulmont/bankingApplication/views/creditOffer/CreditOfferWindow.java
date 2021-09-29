@@ -31,6 +31,11 @@ public class CreditOfferWindow extends Window implements View {
     private NativeSelect<Credit> creditSelect;
 
     private final VerticalLayout windowLayout = new VerticalLayout();
+    private final HorizontalLayout buttonsLayout = new HorizontalLayout();
+    private final HorizontalLayout header = new HorizontalLayout();
+
+    private final Label creditLabel = new Label("Select an offer :");
+
     private final Button selectButton = new Button("Select");
     private final Button backButton = new Button("Back");
 
@@ -51,12 +56,10 @@ public class CreditOfferWindow extends Window implements View {
     }
 
     public Component createContent(){
-        HorizontalLayout buttonsLayout = new HorizontalLayout();
         selectButton.setStyleName(ValoTheme.BUTTON_FRIENDLY);
         backButton.setStyleName(ValoTheme.BUTTON_DANGER);
         buttonsLayout.addComponents(selectButton, backButton);
 
-        Label creditLabel = new Label("Select an offer :");
         if (creditService.findCreditByAmount(creditAmount).size() == 0) {
             windowLayout.addComponents(new Label("No suitable offers were found"));
         } else {
@@ -78,7 +81,6 @@ public class CreditOfferWindow extends Window implements View {
         windowLayout.removeAllComponents();
         center();
 
-        HorizontalLayout header = new HorizontalLayout();
         header.setWidth("100%");
         Label checkInfo = new Label("Check the entered data");
         checkInfo.addStyleName(ValoTheme.LABEL_SUCCESS);

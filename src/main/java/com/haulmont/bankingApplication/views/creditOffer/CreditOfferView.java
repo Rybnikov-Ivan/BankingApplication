@@ -12,8 +12,6 @@ import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @SpringView(name = "creditOffer")
 public class CreditOfferView extends VerticalLayout implements View {
@@ -31,6 +29,7 @@ public class CreditOfferView extends VerticalLayout implements View {
 
     private final Button makeCredit = new Button("Select offers");
 
+    private final HorizontalLayout headerLayout = new HorizontalLayout();
     private final VerticalLayout mainLayout = new VerticalLayout();
     private final HorizontalLayout limit = new HorizontalLayout();
     private final HorizontalLayout period = new HorizontalLayout();
@@ -41,10 +40,19 @@ public class CreditOfferView extends VerticalLayout implements View {
     private final TextField creditAmount = new TextField("Enter the amount: ");
     private final TextField creditPeriod = new TextField("Enter the period: ");
 
+    private final Label header = new Label("Credit Registration");
+
     @PostConstruct
     void init(){
         Page.getCurrent().setTitle("CreditOffer");
         MyUI.setStyleNavigationButton(4);
+
+        header.addStyleName(ValoTheme.LABEL_HUGE);
+        headerLayout.setWidth("100%");
+        headerLayout.addComponent(header);
+        headerLayout.setComponentAlignment(header, Alignment.TOP_CENTER);
+        headerLayout.addStyleName(ValoTheme.LAYOUT_CARD);
+        addComponent(headerLayout);
 
         clientSelect = new NativeSelect<>("Select a client", clientService.findAll());
         clientSelect.setRequiredIndicatorVisible(true);
