@@ -20,34 +20,42 @@ public class CreditView extends VerticalLayout implements View {
     @Autowired
     CreditService creditService;
 
+    private final Button addButton = new Button("Insert");
+    private final Button editButton = new Button("Update");
+    private final Button deleteButton = new Button("Delete");
+
+    private final HorizontalLayout buttonsLayout = new HorizontalLayout();
+    private final HorizontalLayout headerLayout = new HorizontalLayout();
+
     public static Grid<Credit> creditGrid = new Grid<>(Credit.class);
+
+    private final Label header = new Label("All credits");
 
     @PostConstruct
     void init(){
+        Page.getCurrent().setTitle("Credits");
         MyUI.setStyleNavigationButton(3);
-        Button addButton = new Button("Insert");
-        Button editButton = new Button("Update");
-        Button deleteButton = new Button("Delete");
+
+        header.addStyleName(ValoTheme.LABEL_HUGE);
+        headerLayout.setWidth("100%");
+        headerLayout.addComponent(header);
+        headerLayout.setComponentAlignment(header, Alignment.TOP_CENTER);
+        headerLayout.addStyleName(ValoTheme.LAYOUT_CARD);
+        addComponent(headerLayout);
 
         addButton.setIcon(VaadinIcons.INSERT);
         editButton.setIcon(VaadinIcons.REFRESH);
+        editButton.setEnabled(false);
         deleteButton.setIcon(VaadinIcons.FOLDER_REMOVE);
         deleteButton.setStyleName(ValoTheme.BUTTON_DANGER);
-
         deleteButton.setEnabled(false);
-        editButton.setEnabled(false);
-        Page.getCurrent().setTitle("Credits");
 
-        HorizontalLayout buttonsLayout = new HorizontalLayout();
         buttonsLayout.addComponents(addButton, editButton, deleteButton);
         addComponent(buttonsLayout);
 
         creditGrid.setSizeFull();
         creditGrid.setColumns("creditLimit","interestRate");
         creditGrid.setItems(creditService.findAll());
-
-        addComponent(creditGrid);
-
         creditGrid.addSelectionListener(valueChangeEvent -> {
             if (!creditGrid.asSingleSelect().isEmpty()) {
                 editButton.setEnabled(true);
@@ -57,6 +65,7 @@ public class CreditView extends VerticalLayout implements View {
                 deleteButton.setEnabled(false);
             }
         });
+        addComponent(creditGrid);
 
         addButton.addClickListener(e -> {
             Credit credit = new Credit();

@@ -14,6 +14,10 @@ import java.util.regex.Pattern;
 
 public class CreditWindow extends Window implements View {
 
+    private final VerticalLayout main = new VerticalLayout();
+    private final HorizontalLayout buttonsLayout = new HorizontalLayout();
+    private final HorizontalLayout textLayout = new HorizontalLayout();
+
     private final TextField creditLimited = new TextField("Credit limit");
     private final TextField interestRate = new TextField("Interest rate");
 
@@ -35,11 +39,8 @@ public class CreditWindow extends Window implements View {
     }
 
     public Component createContent(){
-        VerticalLayout main = new VerticalLayout();
-        HorizontalLayout buttonsLayout = new HorizontalLayout();
         buttonsLayout.addComponents(save, cancel);
 
-        HorizontalLayout textLayout = new HorizontalLayout();
         textLayout.addComponents(creditLimited, interestRate);
         main.addComponents(textLayout, buttonsLayout);
 
