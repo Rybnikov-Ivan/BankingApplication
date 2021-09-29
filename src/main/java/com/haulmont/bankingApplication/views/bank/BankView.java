@@ -3,6 +3,7 @@ package com.haulmont.bankingApplication.views.bank;
 import com.haulmont.bankingApplication.models.Bank;
 import com.haulmont.bankingApplication.models.CreditOffer;
 import com.haulmont.bankingApplication.services.*;
+import com.haulmont.bankingApplication.views.MyUI;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -43,6 +44,8 @@ public class BankView extends VerticalLayout implements View {
     @PostConstruct
     void init(){
         Page.getCurrent().setTitle("Bank");
+        MyUI.setStyleNavigationButton(2);
+
         addButton.setIcon(VaadinIcons.INSERT);
         detailsButton.setEnabled(false);
         detailsButton.setIcon(VaadinIcons.PAPERPLANE);

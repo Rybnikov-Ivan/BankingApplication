@@ -1,5 +1,6 @@
 package com.haulmont.bankingApplication.views.main;
 
+import com.haulmont.bankingApplication.views.MyUI;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.ExternalResource;
@@ -19,6 +20,7 @@ public class MainView extends VerticalLayout implements View, Serializable {
     void init() {
         FileResource bankFile = new FileResource(new File("src/main/resources/images/bank.jpg"));
         Page.getCurrent().setTitle("Home");
+        MyUI.setStyleNavigationButton(0);
         VerticalLayout verticalLayout = new VerticalLayout();
         HorizontalLayout horizontalLayout = new HorizontalLayout();
         HorizontalLayout headerLayout = new HorizontalLayout();

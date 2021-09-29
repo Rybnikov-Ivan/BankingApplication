@@ -2,6 +2,7 @@ package com.haulmont.bankingApplication.views.client;
 
 import com.haulmont.bankingApplication.models.Client;
 import com.haulmont.bankingApplication.services.ClientService;
+import com.haulmont.bankingApplication.views.MyUI;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -32,6 +33,7 @@ public class ClientView extends VerticalLayout implements View {
     @PostConstruct
     void init(){
         Page.getCurrent().setTitle("Clients");
+        MyUI.setStyleNavigationButton(1);
 
         header.addStyleName(ValoTheme.LABEL_HUGE);
         headerLayout.setWidth("100%");

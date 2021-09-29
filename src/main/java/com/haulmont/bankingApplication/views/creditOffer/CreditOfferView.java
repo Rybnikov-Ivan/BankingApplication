@@ -2,6 +2,7 @@ package com.haulmont.bankingApplication.views.creditOffer;
 
 import com.haulmont.bankingApplication.models.Client;
 import com.haulmont.bankingApplication.services.*;
+import com.haulmont.bankingApplication.views.MyUI;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
@@ -43,6 +44,7 @@ public class CreditOfferView extends VerticalLayout implements View {
     @PostConstruct
     void init(){
         Page.getCurrent().setTitle("CreditOffer");
+        MyUI.setStyleNavigationButton(4);
 
         clientSelect = new NativeSelect<>("Select a client", clientService.findAll());
         clientSelect.setRequiredIndicatorVisible(true);

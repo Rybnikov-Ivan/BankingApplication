@@ -2,6 +2,7 @@ package com.haulmont.bankingApplication.views.credit;
 
 import com.haulmont.bankingApplication.models.Credit;
 import com.haulmont.bankingApplication.services.CreditService;
+import com.haulmont.bankingApplication.views.MyUI;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -23,6 +24,7 @@ public class CreditView extends VerticalLayout implements View {
 
     @PostConstruct
     void init(){
+        MyUI.setStyleNavigationButton(3);
         Button addButton = new Button("Insert");
         Button editButton = new Button("Update");
         Button deleteButton = new Button("Delete");

@@ -60,6 +60,12 @@ public class MyUI extends UI implements ViewDisplay, Serializable {
         return button;
     }
 
+    public static void setStyleNavigationButton(int index){
+        int countOfButtons = buttonsLayout.getComponentCount();
+        for(int i=0; i<countOfButtons; i++)
+            buttonsLayout.getComponent(i).removeStyleName(ValoTheme.BUTTON_FRIENDLY);
+        buttonsLayout.getComponent(index).addStyleName(ValoTheme.BUTTON_FRIENDLY);
+    }
     @Override
     public void showView(View view) {
         springViewDisplay.setContent((Component) view);
