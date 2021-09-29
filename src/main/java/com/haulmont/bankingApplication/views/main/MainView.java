@@ -16,14 +16,16 @@ import java.io.Serializable;
 @SpringView(name = "")
 public class MainView extends VerticalLayout implements View, Serializable {
 
+    private final FileResource bankFile = new FileResource(new File("src/main/resources/images/bank.jpg"));
+
+    private final VerticalLayout verticalLayout = new VerticalLayout();
+    private final HorizontalLayout horizontalLayout = new HorizontalLayout();
+    private final HorizontalLayout headerLayout = new HorizontalLayout();
+
     @PostConstruct
     void init() {
-        FileResource bankFile = new FileResource(new File("src/main/resources/images/bank.jpg"));
         Page.getCurrent().setTitle("Home");
         MyUI.setStyleNavigationButton(0);
-        VerticalLayout verticalLayout = new VerticalLayout();
-        HorizontalLayout horizontalLayout = new HorizontalLayout();
-        HorizontalLayout headerLayout = new HorizontalLayout();
 
         Link linkDev = new Link("About the developer",
                 new ExternalResource("https://vk.com/rrrybnikov"));
